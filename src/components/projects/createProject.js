@@ -26,7 +26,6 @@ class CreateProject extends Component {
   handleProgress = progress => this.setState({ progress });
   handleUploadError = error => {
     this.setState({ isUploading: false });
-    console.error(error);
   };
   handleUploadSuccess = filename => {
     this.setState({ pic: filename, progress: 100, isUploading: false });
@@ -49,7 +48,7 @@ class CreateProject extends Component {
 
     return (
       <div className="container mx-auto">
-        <div className="w-3/ mx-auto p-16 ">
+        <div className="w-3/5 mx-auto p-16 ">
           <form
             onSubmit={this.handleSubmit}
             className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -79,7 +78,7 @@ class CreateProject extends Component {
                 style={{ height: "20em" }}
               >
                 <img
-                  class="w-full h-full object-cover "
+                  className="w-full h-full object-cover "
                   src={this.state.picURL}
                   alt="pic"
                 />

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { signIn } from "../../store/actions/authActions";
 import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class SignIn extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class SignIn extends Component {
     if (this.props.auth.uid) return <Redirect to="/" />;
     return (
       <div className="container mx-auto">
-        <div className="w-3/ mx-auto p-16 ">
+        <div className="w-3/5 mx-auto p-16 ">
           <form
             onSubmit={this.handleSubmit}
             className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -79,12 +80,12 @@ class SignIn extends Component {
               >
                 Log In
               </button>
-              <a
+              <Link
                 className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                href="/"
+                to="/signUp"
               >
-                Forgot Password?
-              </a>
+                Don't have an acount? Sign Up
+              </Link>
             </div>
           </form>
           <p className="text-center text-gray-500 text-xs">

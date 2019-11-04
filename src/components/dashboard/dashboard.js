@@ -12,15 +12,14 @@ class Dashboard extends Component {
     this.state = {};
   }
   render() {
-    // console.log(this.props);
     const { projects, auth, notifications, profile } = this.props;
 
     if (!auth.uid) return <Redirect to="/signIn" />;
 
     return (
       <div className="container mx-auto">
-        <div className="flex">
-          <div className="w-4/6   ">
+        <div className="dashboard flex  ">
+          <div className="w-4/6  ">
             <ProjectList projects={projects} />
           </div>
           <div className="w-2/6  ">
@@ -33,8 +32,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
-
   return {
     projects: state.firestoreProject.ordered.projects,
     notifications: state.firestoreProject.ordered.notifications,

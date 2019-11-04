@@ -11,15 +11,7 @@ class SignUp extends Component {
       email: "",
       password: "",
       firstName: "",
-      lastName: "",
-      avatar: "",
-      avatarURL: "",
-      isUploading: "",
-      progress: "",
-      bio: "",
-      website: "",
-      number: "",
-      gender: ""
+      lastName: ""
     };
   }
 
@@ -35,7 +27,7 @@ class SignUp extends Component {
     if (this.props.auth.uid) return <Redirect to="/" />;
     return (
       <div className="container mx-auto">
-        <div className="w-3/ mx-auto p-16 ">
+        <div className="w-3/5 mx-auto p-16 ">
           <form
             onSubmit={this.handleSubmit}
             className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"

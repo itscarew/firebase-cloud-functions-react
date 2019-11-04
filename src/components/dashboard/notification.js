@@ -3,7 +3,6 @@ import moment from "moment";
 
 const Notifications = ({ notifications, profile }) => {
   const user = `${profile.firstName} ${profile.lastName}`;
-  console.log(user);
 
   return (
     <div className="flex flex-col p-4 ">
@@ -12,11 +11,11 @@ const Notifications = ({ notifications, profile }) => {
         notifications.map(notification => (
           <div
             key={notification.id}
-            class="flex items-center bg-gray-700 text-white text-sm font-bold px-4 py-3 border-b-2 border-gray-800  "
+            className="flex items-center bg-gray-700 text-white text-sm font-bold px-4 py-3 border-b-2 border-gray-800  "
             role="alert"
           >
             <svg
-              class="fill-current w-4 h-4 mr-2"
+              className="fill-current w-4 h-4 mr-2"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
             >

@@ -2,8 +2,6 @@ import React from "react";
 import ProjectSummary from "./projectSummary";
 
 const ProjectList = ({ projects }) => {
-  console.log(projects);
-
   return (
     <div className="flex flex-col p-4 ">
       {projects &&

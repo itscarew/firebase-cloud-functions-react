@@ -11,7 +11,7 @@ const ProjectDetails = props => {
     return <Redirect to="/signIn" />;
   } else if (project) {
     return (
-      <div classNameName="container mx-auto ">
+      <div className="container mx-auto ">
         <div className=" max-w-sm w-full lg:max-w-full lg:flex p-16 ">
           <div className=" max-w-sm w-full lg:max-w-full border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 mb-4 flex flex-col justify-between leading-normal">
             <div className="mb-8">
@@ -23,7 +23,7 @@ const ProjectDetails = props => {
                 style={{ height: "24em" }}
               >
                 <img
-                  class="w-full h-full object-cover object-center "
+                  className="w-full h-full object-cover object-center "
                   src={project.picURL}
                   alt="Project Pic"
                 />
@@ -49,12 +49,11 @@ const ProjectDetails = props => {
       </div>
     );
   } else {
-    return <div classNameName="container mx-auto ">Loading Projects</div>;
+    return <div className="container mx-auto ">Loading Projects</div>;
   }
 };
 
 const mapStateToProps = (state, onProps) => {
-  console.log(state);
   const id = onProps.match.params.id;
   const projects = state.firestoreProject.data.projects;
   const project = projects ? projects[id] : null;
