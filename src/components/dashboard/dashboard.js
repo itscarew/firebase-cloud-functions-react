@@ -13,24 +13,18 @@ class Dashboard extends Component {
   }
   render() {
     // console.log(this.props);
-    const { projects, auth } = this.props;
+    const { projects, auth, notifications, profile } = this.props;
 
     if (!auth.uid) return <Redirect to="/signIn" />;
 
     return (
       <div className="container mx-auto">
         <div className="flex">
-          <div
-            className="w-4/6  overflow-y-auto  "
-            style={{ height: "90vh", minHeight: "90vh" }}
-          >
+          <div className="w-4/6   ">
             <ProjectList projects={projects} />
           </div>
-          <div
-            className="w-2/6 overflow-y-auto "
-            style={{ height: "90vh", minHeight: "90vh" }}
-          >
-            <Notification />
+          <div className="w-2/6  ">
+            <Notification notifications={notifications} profile={profile} />
           </div>
         </div>
       </div>
@@ -43,11 +37,16 @@ const mapStateToProps = state => {
 
   return {
     projects: state.firestoreProject.ordered.projects,
-    auth: state.firebase.auth
+    notifications: state.firestoreProject.ordered.notifications,
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
   };
 };
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "projects" }])
+  firestoreConnect([
+    { collection: "projects", orderBy: ["createdAt", "desc"] },
+    { collection: "notifications", limit: 5, orderBy: ["date", "desc"] }
+  ])
 )(Dashboard);

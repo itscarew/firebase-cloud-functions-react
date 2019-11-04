@@ -5,8 +5,6 @@ import SignedOutLinks from "./signedoutLinks";
 import { connect } from "react-redux";
 
 const Navbar = props => {
-  console.log(props.auth);
-
   return (
     <header className=" bg-gray-700 p-2 ">
       <div className="container mx-auto flex items-center justify-between  ">
@@ -15,7 +13,11 @@ const Navbar = props => {
           Serenity{" "}
         </Link>
         <div className="flex">
-          {props.auth.uid ? <SignedInLinks /> : <SignedOutLinks />}
+          {props.auth.uid ? (
+            <SignedInLinks profile={props.profile} />
+          ) : (
+            <SignedOutLinks />
+          )}
         </div>
       </div>
     </header>
@@ -23,7 +25,9 @@ const Navbar = props => {
 };
 
 const mapStateToProps = state => {
-  return { auth: state.firebase.auth };
+  console.log(state);
+
+  return { auth: state.firebase.auth, profile: state.firebase.profile };
 };
 
 export default connect(mapStateToProps)(Navbar);

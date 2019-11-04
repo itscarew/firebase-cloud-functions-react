@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
+import { signUp } from "../../store/actions/authActions";
 
 class SignUp extends Component {
   constructor(props) {
@@ -10,7 +11,15 @@ class SignUp extends Component {
       email: "",
       password: "",
       firstName: "",
-      lastName: ""
+      lastName: "",
+      avatar: "",
+      avatarURL: "",
+      isUploading: "",
+      progress: "",
+      bio: "",
+      website: "",
+      number: "",
+      gender: ""
     };
   }
 
@@ -20,7 +29,7 @@ class SignUp extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    this.props.signUp(this.state);
   };
   render() {
     if (this.props.auth.uid) return <Redirect to="/" />;
@@ -94,9 +103,16 @@ class SignUp extends Component {
                 onChange={this.handleChange}
                 required
               />
-              {/* <p class="text-red-500 text-xs italic">
-                Please choose a password.
-              </p> */}
+            </div>
+            <div
+              className={
+                this.props.authError
+                  ? "bg-orange-100 border-l-4 border-red-500 text-red-700 p-4 mb-2"
+                  : ""
+              }
+              role="alert"
+            >
+              {this.props.authError ? <p>{this.props.authError}</p> : <p></p>}
             </div>
             <div className="flex items-center justify-between">
               <button
@@ -124,8 +140,18 @@ class SignUp extends Component {
 
 const mapStateToProps = state => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    authError: state.auth.authError
   };
 };
 
-export default connect(mapStateToProps)(SignUp);
+const mapDispatchToProps = dispatch => {
+  return {
+    signUp: newUser => dispatch(signUp(newUser))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUp);

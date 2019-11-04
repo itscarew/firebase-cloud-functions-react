@@ -1,9 +1,5 @@
 const initialState = {
-  projects: [
-    { id: 1, title: "Flex", content: "Over the roof" },
-    { id: 3, title: "Over", content: "Over the the roof top , make up" },
-    { id: 4, title: "Road", content: "Make me do it all over again" }
-  ]
+  projects: []
 };
 
 const projectReducer = (state = initialState, action) => {

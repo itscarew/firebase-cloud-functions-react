@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
+import moment from "moment";
 
 const ProjectDetails = props => {
   const { project, auth } = props;
@@ -17,6 +18,17 @@ const ProjectDetails = props => {
               <div className="text-gray-900 font-bold text-3xl mb-2">
                 {project.title}
               </div>
+              <figure
+                className="w-full overflow-hidden "
+                style={{ height: "24em" }}
+              >
+                <img
+                  class="w-full h-full object-cover object-center "
+                  src={project.picURL}
+                  alt="Project Pic"
+                />
+              </figure>
+
               <p className="text-gray-700 text-base">{project.content}</p>
             </div>
             <div className="flex items-center">
@@ -26,7 +38,10 @@ const ProjectDetails = props => {
                   {"  "}
                   {project.authorLastName}
                 </p>
-                <p className="text-gray-600">Aug 18, 2am</p>
+                <p className="text-gray-600">
+                  {" "}
+                  {moment(project.createdAt.toDate()).fromNow()}
+                </p>
               </div>
             </div>
           </div>

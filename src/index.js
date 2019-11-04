@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import UIkit from "uikit";
+import Icons from "uikit/dist/js/uikit-icons";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore, applyMiddleware, compose } from "redux";
@@ -26,6 +28,7 @@ const store = createStore(
 
 const rrfConfig = {
   useFirestoreForProfile: true,
+  userProfile: "user",
   attachAuthIsReady: true
 };
 
@@ -36,6 +39,7 @@ const rrfProps = {
   createFirestoreInstance // <- needed if using firestore
 };
 
+UIkit.use(Icons);
 ReactDOM.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
