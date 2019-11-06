@@ -15,12 +15,9 @@ const ProjectDetails = props => {
         <div className=" max-w-sm w-full lg:max-w-full lg:flex p-16 ">
           <div className=" max-w-sm w-full lg:max-w-full border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 mb-4 flex flex-col justify-between leading-normal">
             <div className="mb-8">
-              <div className="text-gray-900 font-bold text-3xl mb-2">
-                {project.title}
-              </div>
               <figure
                 className="w-full overflow-hidden "
-                style={{ height: "24em" }}
+                style={{ height: "40em" }}
               >
                 <img
                   className="w-full h-full object-cover object-center "
@@ -28,7 +25,9 @@ const ProjectDetails = props => {
                   alt="Project Pic"
                 />
               </figure>
-
+              <div className="text-gray-900 font-bold text-3xl mb-2">
+                {project.title}
+              </div>
               <p className="text-gray-700 text-base">{project.content}</p>
             </div>
             <div className="flex items-center">

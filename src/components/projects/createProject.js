@@ -74,7 +74,7 @@ class CreateProject extends Component {
             {this.state.isUploading && <p>Progress: {this.state.progress}</p>}
             {this.state.picURL ? (
               <figure
-                className="w-1/4 overflow-hidden block "
+                className="w-2/4 overflow-hidden block "
                 style={{ height: "20em" }}
               >
                 <img
